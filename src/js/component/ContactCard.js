@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
+
 
 
 export const ContactCard = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
-
+	const {store, actions} = useContext(Context);
 	return (
 		<li className="list-group-item">
 			<div className="row w-100">
@@ -19,7 +21,10 @@ export const ContactCard = props => {
 						<button className="btn">
 							<i className="fas fa-pencil-alt mr-3" onClick={() => {props.onEdit()}}/>
 						</button>
-						<button className="btn" onClick={() => props.onDelete()}>
+						<button className="btn" onClick={() => {
+							props.onDelete();
+							actions.updateIdForModal(props.contact.id)
+							}}>
 							<i 
 							className="fas fa-trash-alt"
 							// onClick={async() => {}} 

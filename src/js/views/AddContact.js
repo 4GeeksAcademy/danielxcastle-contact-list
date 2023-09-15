@@ -11,7 +11,7 @@ export const AddContact = () => {
             fetch(`https://playground.4geeks.com/apis/fake/contact/${
                 params.contactId
             }`).then((response) => response.json()).then((body) => {
-                setContact(body[0]);
+                setContact(body);
             })
 
         }
@@ -20,7 +20,7 @@ export const AddContact = () => {
         <div>
             <h1 className="text-center mt-5">
                 {
-                contact ?. id ? "Edit " : "Add a new "
+                contact?.id ? "Edit " : "Add a new "
             }
                 contact</h1>
             <form>
@@ -28,7 +28,7 @@ export const AddContact = () => {
                     <label>Full Name</label>
                     <input type="text" className="form-control" placeholder="Full Name"
                         value={
-                            contact ?. full_name || ""
+                            contact?.full_name || ""
                         }
                         onChange={
                             (event) => {
@@ -48,7 +48,7 @@ export const AddContact = () => {
                 <label>Email</label>
                 <input type="email" className="form-control" placeholder="Enter email"
                     value={
-                        contact ?. email || ""
+                        contact?.email || ""
                     }
                     onChange={
                         (event) => {
@@ -69,7 +69,7 @@ export const AddContact = () => {
             <label>Phone</label>
             <input type="phone" className="form-control" placeholder="Enter phone"
                 value={
-                    contact ?. phone || ""
+                    contact?.phone || ""
                 }
                 onChange={
                     (event) => {
@@ -89,7 +89,7 @@ export const AddContact = () => {
         <label>Address</label>
         <input type="text" className="form-control" placeholder="Enter address"
             value={
-                contact ?. address || ""
+                contact?.address || ""
             }
             onChange={
                 (event) => {

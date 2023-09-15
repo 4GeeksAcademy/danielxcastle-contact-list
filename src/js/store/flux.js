@@ -13,10 +13,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			contacts:[]
+			contacts:[],
+			contactIdForModal:undefined
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			updateIdForModal: (contactId) => {
+				setStore ({contactIdForModal: contactId})
+			},
 			getContacts: () => {
 				fetch(
 					"https://playground.4geeks.com/apis/fake/contact/agenda/danielxcastle"
